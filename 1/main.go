@@ -8,9 +8,8 @@ func main() {
 
 	for _, v := range l1 {
 		fmt.Println(v)
-	}
-
-	for _, v := range l2 {
-		fmt.Println(v)
+		for _, v := range l2 {
+			fmt.Println(v)
+		}
 	}
 }
