@@ -52,6 +52,8 @@ func main() {
 		occurrences[value]++
 	}
 
+	fmt.Println(occurrences)
+
 	sum = 0
 	for _, v := range a {
 		count, exists := occurrences[v]
