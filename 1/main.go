@@ -1,15 +1,22 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+	"sort"
+)
 
 func main() {
-	var l1 = [6]int{3, 4, 2, 1, 3, 3}
-	var l2 = [6]int{4, 3, 5, 3, 9, 3}
+	a := []int{3, 4, 2, 1, 3, 3}
+	b := []int{4, 3, 5, 3, 9, 3}
 
-	for _, v := range l1 {
-		fmt.Println(v)
-		for _, v := range l2 {
-			fmt.Println(v)
-		}
+	sort.Ints(a) // Sort array a
+	sort.Ints(b) // Sort array a
+
+	sum := 0
+	for i := range a {
+		sum += int(math.Abs(float64(a[i] - b[i])))
 	}
+
+	fmt.Println(sum)
 }
