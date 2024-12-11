@@ -42,5 +42,22 @@ func main() {
 		sum += int(math.Abs(float64(a[i] - b[i])))
 	}
 
-	fmt.Println(sum)
+	fmt.Println("Distance score: ", sum)
+
+
+	
+	occurrences := make(map[int]int)
+
+	for _, value := range b {
+		occurrences[value]++
+	}
+
+	sum = 0
+	for _, v := range a {
+		count, exists := occurrences[v]
+		if exists {
+			sum += v * count
+		}
+	}
+	fmt.Println("Similarity score:", sum)
 }
