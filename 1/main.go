@@ -4,14 +4,38 @@ import (
 	"fmt"
 	"math"
 	"sort"
+	"strings"
+	"bufio"
+	"os"
+	"strconv"
 )
 
 func main() {
-	a := []int{3, 4, 2, 1, 3, 3}
-	b := []int{4, 3, 5, 3, 9, 3}
+	file, err := os.Open("input.txt")
+	if err != nil {
+		fmt.Println("Error opening file:", err)
+		return
+	}
+	defer file.Close()
 
-	sort.Ints(a) // Sort array a
-	sort.Ints(b) // Sort array a
+	var a []int
+	var b []int
+
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		// Read line as string.
+		line := scanner.Text()
+		columns := strings.Fields(line)
+
+		valA, _ := strconv.Atoi(columns[0])
+		valB, _ := strconv.Atoi(columns[1])
+
+		a = append(a, valA)
+		b = append(b, valB)
+	}
+
+	sort.Ints(a)
+	sort.Ints(b)
 
 	sum := 0
 	for i := range a {
