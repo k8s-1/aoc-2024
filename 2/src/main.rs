@@ -9,19 +9,32 @@ fn main() -> io::Result<()> {
 
     let reader = io::BufReader::new(file);
 
-    let mut list_of_lists: Vec<Vec<i32>> = Vec::new();
+    let mut reports: Vec<Vec<i32>> = Vec::new();
 
     for line in reader.lines() {
         let line = line?;
-        let numbers: Vec<i32> = line
+        let report: Vec<i32> = line
             .split_whitespace()
             .filter_map(|s| s.parse::<i32>().ok())
             .collect();
-        list_of_lists.push(numbers);
+        reports.push(report);
     }
 
-    for list in &list_of_lists {
-        println!("{:?}", list);
+    for report in &reports {
+
+        for i in 0..report.len() - 1 { // Loop up to the second-to-last element
+            let current = report[i];
+            let next = report[i + 1];
+
+            if current < next {
+                println!("{} is less than {}", current, next);
+            } else if current > next {
+                println!("{} is greater than {}", current, next);
+            } else {
+                println!("{} is equal to {}", current, next);
+            }
+        }
+
     }
 
     Ok(())
