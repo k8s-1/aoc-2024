@@ -20,20 +20,7 @@ fn main() -> io::Result<()> {
         list_of_lists.push(numbers);
     }
 
-    for li in &list_of_lists {
-        for i in 0..li.len() - 1 { // Loop up to the second-to-last element
-            let current = li[i];
-            let next = li[i + 1];
-
-            if current < next {
-                println!("{} is less than {}", current, next);
-            } else if current > next {
-                println!("{} is greater than {}", current, next);
-            } else {
-                println!("{} is equal to {}", current, next);
-            }
-        }
-    }
+    println!("Total safe items: {}", total_safe(&mut list_of_lists));
 
     Ok(())
 }
@@ -65,7 +52,12 @@ fn is_safe(list: &mut [i32]) -> bool {
 }
 
 
-
-
-
-
+fn total_safe(list_of_lists: &mut Vec<Vec<i32>>) -> i32 {
+    let mut sum = 0;
+    for li in list_of_lists {
+        if is_safe(li) {
+            sum += 1;
+        }
+    }
+    sum
+}
