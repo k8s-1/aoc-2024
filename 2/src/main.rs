@@ -21,7 +21,6 @@ fn main() -> io::Result<()> {
     }
 
     for li in &list_of_lists {
-
         for i in 0..li.len() - 1 { // Loop up to the second-to-last element
             let current = li[i];
             let next = li[i + 1];
