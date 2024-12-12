@@ -11,20 +11,20 @@ fn main() -> io::Result<()> {
 
     let mut list_of_lists: Vec<Vec<i32>> = Vec::new();
 
-    for line in reader.lines() {
-        let line = line?;
-        let numbers: Vec<i32> = line
+    for l in reader.lines() {
+        let l = l?;
+        let numbers: Vec<i32> = l
             .split_whitespace()
             .filter_map(|s| s.parse::<i32>().ok())
             .collect();
         list_of_lists.push(numbers);
     }
 
-    for list in &list_of_lists {
+    for li in &list_of_lists {
 
-        for i in 0..numbers.len() - 1 { // Loop up to the second-to-last element
-            let current = numbers[i];
-            let next = numbers[i + 1];
+        for i in 0..li.len() - 1 { // Loop up to the second-to-last element
+            let current = li[i];
+            let next = li[i + 1];
 
             if current < next {
                 println!("{} is less than {}", current, next);
