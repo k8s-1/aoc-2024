@@ -22,7 +22,7 @@ fn main() -> io::Result<()> {
 
     for report in &reports {
 
-        for i in 0..report.len() - 1 { // Loop up to the second-to-last element
+        for i in 0..report.len() - 1 {
             let current = report[i];
             let next = report[i + 1];
 
