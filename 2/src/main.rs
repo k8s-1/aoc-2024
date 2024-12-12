@@ -42,7 +42,7 @@ fn is_safe(list: &mut [i32]) -> bool {
     for w in list.windows(2) {
         let diff = w[1] - w[0];
         match diff {
-            d if d > 0 => continue,
+            d if d > 0 && d < 4 => continue,
             _ => return false,
         }
 
