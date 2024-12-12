@@ -37,3 +37,35 @@ fn main() -> io::Result<()> {
 
     Ok(())
 }
+
+fn is_decreasing(list: &[i32]) -> bool {
+    for w in list.windows(2) {
+        if w[0] > w[1] {
+            return true
+        }
+    }
+    false
+}
+
+fn is_safe(list: &mut [i32]) -> bool {
+    if is_decreasing(list) {
+        list.reverse();
+    }
+
+    for w in list.windows(2) {
+        let diff = w[1] - w[0];
+        match diff {
+            d if d > 0 => continue,
+            _ => return false,
+        }
+
+    }
+
+    true
+}
+
+
+
+
+
+
