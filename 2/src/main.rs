@@ -1,7 +1,6 @@
 use std::fs::File;
 use std::io::{self, BufRead};
 
-
 fn main() -> io::Result<()> {
     let path = "input.txt";
 
@@ -28,7 +27,7 @@ fn main() -> io::Result<()> {
 fn is_decreasing(list: &[i32]) -> bool {
     for w in list.windows(2) {
         if w[0] > w[1] {
-            return true
+            return true;
         }
     }
     false
@@ -45,12 +44,30 @@ fn is_safe(list: &mut [i32]) -> bool {
             d if d > 0 && d < 4 => continue,
             _ => return false,
         }
-
     }
 
     true
 }
 
+fn remove_one<T: Clone>(input: Vec<T>) -> Vec<Vec<T>> {
+    let mut result = Vec::new();
+    for i in 0..input.len() {
+        let mut temp = input.clone();
+        temp.remove(i);
+        result.push(temp);
+    }
+    result
+}
+
+fn is_damp_safe(list: &mut [i32]) -> bool {
+    let mut counter = 0;
+
+    let lists = remove_one(list.to_vec());
+    for l in lists {
+        if is_safe(list) {}
+    }
+    true
+}
 
 fn total_safe(list_of_lists: &mut Vec<Vec<i32>>) -> i32 {
     let mut sum = 0;
