@@ -62,7 +62,7 @@ fn remove_one<T: Clone>(input: Vec<T>) -> Vec<Vec<T>> {
 
 fn is_damp_safe(list: &mut [i32]) -> bool {
     if is_safe(list) {
-        return true;
+        return true
     }
 
     let sublists = remove_one(list.to_vec());
@@ -70,7 +70,7 @@ fn is_damp_safe(list: &mut [i32]) -> bool {
     for mut l in sublists {
         let x: &mut [i32] = l.as_mut_slice();
         if is_safe(x) {
-            return true;
+            return true
         }
     }
 
