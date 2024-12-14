@@ -66,9 +66,9 @@ fn is_damp_safe(list: &mut [i32]) -> bool {
     }
 
     let mut counter = 0;
-    let lists = remove_one(list.to_vec());
+    let sublists = remove_one(list.to_vec());
 
-    for mut l in lists {
+    for mut l in sublists {
         let x: &mut [i32] = l.as_mut_slice();
         if !is_safe(x) {
             counter += 1;
