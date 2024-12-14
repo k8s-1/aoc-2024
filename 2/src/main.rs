@@ -74,7 +74,7 @@ fn is_damp_safe(list: &mut [i32]) -> bool {
         }
     }
 
-    true
+    return false
 }
 
 fn total_safe(list_of_lists: &mut Vec<Vec<i32>>) -> i32 {
