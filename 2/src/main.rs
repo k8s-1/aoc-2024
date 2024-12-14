@@ -20,6 +20,7 @@ fn main() -> io::Result<()> {
     }
 
     println!("Total safe items: {}", total_safe(&mut list_of_lists));
+    println!("Total dampened safe items: {}", total_damp_safe(&mut list_of_lists));
 
     Ok(())
 }
@@ -70,7 +71,7 @@ fn is_damp_safe(list: &mut [i32]) -> bool {
         }
 
         if counter > 1 {
-            return false
+            return false;
         }
     }
 
@@ -81,6 +82,16 @@ fn total_safe(list_of_lists: &mut Vec<Vec<i32>>) -> i32 {
     let mut sum = 0;
     for li in list_of_lists {
         if is_safe(li) {
+            sum += 1;
+        }
+    }
+    sum
+}
+
+fn total_damp_safe(list_of_lists: &mut Vec<Vec<i32>>) -> i32 {
+    let mut sum = 0;
+    for li in list_of_lists {
+        if is_damp_safe(li) {
             sum += 1;
         }
     }
